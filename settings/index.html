@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+
+<head>
+    <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src='../assets/js/bootstrap.bundle.min.js'></script>
+</head>
+
+<body class=hy-nostyle">
+
+    <h1 data-i18n="settings.title">Settings</h1>
+
+    <form>
+        <fieldset class="hy-nostyle border p-3 mb-3">
+            <div class="row mb-3">
+                <div class="col-auto">
+                    <div class="form-text hy-nostyle small mt-0">Log messages</div>
+                </div>
+
+                <div class="col">
+                    <div class="form-check form-switch form-check-reverse hy-nostyle">
+                        <input class="form-check-input hy-nostyle" type="checkbox" role="switch" id="message.enabled">
+                        <label class="form-check-label form-text  small mt-0 hy-nostyle"
+                            for="message.enabled">Enabled</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="message.level" class="form-label small hy-nostyle">Log Level</label>
+                    <select id="message.level" class="form-select hy-nostyle" aria-label="Log Level">
+                        <option value="debug" selected>Debug</option>
+                        <option value="info">Info</option>
+                        <option value="notice">Notice</option>
+                        <option value="warning">Warning</option>
+                        <option value="error">Error</option>
+                        <option value="critical">Critical</option>
+                        <option value="alert">Alert</option>
+                        <option value="emergency">Emergency</option>
+                    </select>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Files</h5>
+                    <p class="card-text">List of message files stored locally</p>
+                </div>
+                <ul id="message.files" class="list-group list-group-flush">
+                </ul>
+                <div class="card-body">
+                    <a id="message.delete" href="#" class="btn btn-danger">Delete Message Files</a>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="hy-nostyle border p-3 mb-3">
+            <div class="row mb-3">
+                <div class="col-auto">
+                    <div class="form-text hy-nostyle small mt-0">Log details</div>
+                </div>
+
+                <div class="col">
+                    <div class="form-check form-switch form-check-reverse hy-nostyle">
+                        <input class="form-check-input hy-nostyle" type="checkbox" role="switch" id="detail.enabled">
+                        <label class="form-check-label form-text  small mt-0 hy-nostyle"
+                            for="detail.enabled">Enabled</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="detail.level" class="form-label small hy-nostyle">Log Level</label>
+                    <select id="detail.level" class="form-select hy-nostyle" aria-label="Log Level">
+                        <option value="debug" selected>Debug</option>
+                        <option value="info">Info</option>
+                        <option value="notice">Notice</option>
+                        <option value="warning">Warning</option>
+                        <option value="error">Error</option>
+                        <option value="critical">Critical</option>
+                        <option value="alert">Alert</option>
+                        <option value="emergency">Emergency</option>
+                    </select>
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Files</h5>
+                    <p class="card-text">List of detail files stored locally</p>
+                </div>
+                <ul id="detail.files" class="list-group list-group-flush">
+                </ul>
+                <div class="card-body">
+                    <a id="detail.delete" href="#" class="btn btn-danger">Delete Detail Files</a>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="hy-nostyle border p-3 mb-3">
+            <div class="row mb-3">
+                <div class="col-auto">
+                    <div class="form-text hy-nostyle small mt-0">Log to BetterStack.</div>
+                </div>
+                <div class="col">
+                    <div class="form-check form-switch form-check-reverse hy-nostyle">
+                        <input class="form-check-input hy-nostyle" type="checkbox" role="switch"
+                            id="betterstack.enabled">
+                        <label class="form-check-label form-text  small mt-0 hy-nostyle"
+                            for="betterstack.enabled">Enabled</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="form-floating">
+                        <input type="text" class="form-control hy-nostyle" id="betterstack.api" placeholder="ABC123">
+                        <label class="hy-nostyle" for="betterstack.api">API Key</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="betterstack.level" class="form-label small hy-nostyle">Log Level</label>
+                    <select id="betterstack.level" class="form-select hy-nostyle" aria-label="Log Level">
+                        <option value="debug" selected>Debug</option>
+                        <option value="info">Info</option>
+                        <option value="notice">Notice</option>
+                        <option value="warning">Warning</option>
+                        <option value="error">Error</option>
+                        <option value="critical">Critical</option>
+                        <option value="alert">Alert</option>
+                        <option value="emergency">Emergency</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="betterstack.verbosity" class="form-label small hy-nostyle">Verbosity</label>
+                    <select id="betterstack.verbosity" class="form-select hy-nostyle" aria-label="Log Level">
+                        <option value="message">Message</option>
+                        <option value="detail" selected>Detail</option>
+                        <option value="meta" disabled>Metadata</option>
+                        <option value="exhaustive" disabled>Exhaustive</option>
+                    </select>
+                    <small>Note: Increasing the verbosity will increase your usage quota.</small>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="d-grid gap-2 mb-3">
+            <button id="save" type="button" class="btn btn-success hy-nostyle">Save</button>
+        </div>
+
+        
+
+    </form>
+    <script type="text/javascript">
+
+        function onHomeyReady(Homey) {
+
+            Homey.ready();
+
+
+
+
+            // Todo add display of log file
+            // fetch("../userdata/local.log")
+            //     .then((res) => res.text())
+            //     .then((text) => {
+            //         console.log(text)
+            //         // do something with "text"
+            //     })
+            //     .catch((e) => console.error(e));
+            //
+
+
+            var elements = {
+                message: {
+                    enabled: document.getElementById('message.enabled'),
+                    level: document.getElementById('message.level'),
+                    files: document.getElementById('message.files'),
+                    delete: document.getElementById('message.delete')
+                },
+                detail: {
+                    enabled: document.getElementById('detail.enabled'),
+                    level: document.getElementById('detail.level'),
+                    files: document.getElementById('detail.files'),
+                    delete: document.getElementById('detail.delete')
+                },
+                betterstack: {
+                    enabled: document.getElementById('betterstack.enabled'),
+                    api: document.getElementById('betterstack.api'),
+                    level: document.getElementById('betterstack.level'),
+                },
+
+            }
+            var saveElement = document.getElementById('save');
+
+            function refreshFiles () { 
+                elements.message.files.innerHTML = '';
+                elements.detail.files.innerHTML = '';
+
+                Homey.api('GET', '/files', (error, data) => {
+                if (error) return Homey.alert(error);
+                let url = ''
+                data.forEach((item) => {
+                    let el = document.createElement("a");
+                    el.className = 'list-group-item list-group-item-action'
+                    el.innerText = item.name + ' (' + (item.size / (1024)).toFixed(2) + 'kb)';
+                    url = '/app/com.audit/userdata/' + item.name
+                    el.href = url
+                    el.target = "_blank"
+                    elements[item.type].files.appendChild(el);
+                });
+
+                // elements.detail.files.innerHTML = value
+            });
+
+            }
+            refreshFiles()
+            
+
+            Homey.get('message.enabled', function (err, value) {
+                if (err) return Homey.alert(err);
+                elements.message.enabled.checked = value;
+            });
+
+            Homey.get('message.level', function (err, value) {
+                if (err) return Homey.alert(err);
+                elements.message.level.value = value;
+            });
+
+            Homey.get('detail.enabled', function (err, value) {
+                if (err) return Homey.alert(err);
+                elements.detail.enabled.checked = value;
+            });
+
+            Homey.get('detail.level', function (err, value) {
+                if (err) return Homey.alert(err);
+                elements.detail.level.value = value;
+            });
+
+            Homey.get('betterstack.enabled', function (err, value) {
+                if (err) return Homey.alert(err);
+                elements.betterstack.enabled.checked = value;
+            });
+
+            Homey.get('betterstack.api', function (err, value) {
+                if (err) return Homey.alert(err);
+                elements.betterstack.api.value = value
+            });
+
+            Homey.get('betterstack.level', function (err, value) {
+                if (err) return Homey.alert(err);
+                elements.betterstack.level.value = value
+            });
+
+            elements.message.delete.addEventListener('click', function (e) {
+                Homey.api('DELETE', '/message', (error, data) => {
+                    Homey.alert('Deleteing files, to start logging messages again please restart the app.')
+                    refreshFiles()
+                })
+            })
+
+            elements.detail.delete.addEventListener('click', function (e) {
+                Homey.api('DELETE', '/detail', (error, data) => {
+                    Homey.alert('Deleteing files, to start logging details again please restart the app.')
+                    refreshFiles()
+                })
+            })
+
+            saveElement.addEventListener('click', function (e) {
+
+                Homey.set('message.enabled', elements.message.enabled.checked, function (err) {
+                    if (err) return Homey.alert(err);
+                });
+
+                Homey.set('message.level', elements.message.level.value, function (err) {
+                    if (err) return Homey.alert(err);
+                });
+
+                Homey.set('detail.enabled', elements.detail.enabled.checked, function (err) {
+                    if (err) return Homey.alert(err);
+                });
+
+                Homey.set('detail.level', elements.detail.level.value, function (err) {
+                    if (err) return Homey.alert(err);
+                });
+
+                Homey.set('betterstack.enabled', elements.betterstack.enabled.checked, function (err) {
+                    if (err) return Homey.alert(err);
+                });
+
+                Homey.set('betterstack.api', elements.betterstack.api.value, function (err) {
+                    if (err) return Homey.alert(err);
+                });
+
+                Homey.set('betterstack.level', elements.betterstack.level.value, function (err) {
+                    if (err) return Homey.alert(err);
+                });
+                Homey.alert('Settings updated, you now need to restart the app for them to take effect.')
+            });
+        }
+    </script>
+</body>
+
+</html>
